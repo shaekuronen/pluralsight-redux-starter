@@ -1,6 +1,8 @@
+import * as types from '../actions/actionTypes'
+
 export default function(state = [], action) {
     switch(action.type) {
-        case 'CREATE_COURSE':
+        case types.CREATE_COURSE:
             // es6 spread operator ftw
             return [
                 ...state,
