@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import * as courseActions from '../../actions/courseActions';
 import {bindActionCreators} from 'redux';
 import CoursesList from './CoursesList';
+import {Link} from 'react-router';
 
 class CoursesPage extends React.Component {
     constructor(props, context) {
@@ -17,6 +18,7 @@ class CoursesPage extends React.Component {
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>Courses</h1>
+                        <Link to='/course' className="btn btn-primary">Add Course</Link>
                         <CoursesList courses={this.props.courses} />
                     </div>
                 </div>

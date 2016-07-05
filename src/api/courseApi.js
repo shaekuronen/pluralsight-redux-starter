@@ -56,6 +56,7 @@ const generateId = (course) => {
 };
 
 class CourseApi {
+
   static getAllCourses() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
