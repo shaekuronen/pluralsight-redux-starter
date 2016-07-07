@@ -2,11 +2,11 @@ import * as types from './actionTypes';
 import CourseApi from '../api/courseApi';
 
 export function updateCourseSuccess(course) {
-    return {type: types.UPDATE_COURSE_SUCCESS, course}
+    return {type: types.UPDATE_COURSE_SUCCESS, course};
 }
 
 export function createCourseSuccess(course) {
-    return {type: types.CREATE_COURSE_SUCCESS, course}
+    return {type: types.CREATE_COURSE_SUCCESS, course};
 }
 
 export function saveCourse(course) {
@@ -15,15 +15,15 @@ export function saveCourse(course) {
             course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
         }).catch(error => {
             throw(error);
-        })
-    }
+        });
+    };
 }
 
 export function loadCoursesSuccess(courses) {
     return {
         type: types.LOAD_COURSES_SUCCESS,
         courses
-    }
+    };
 }
 
 // TODO: implement this instead of throwing error
@@ -31,7 +31,7 @@ export function loadCoursesFailure(error) {
     return {
         type: types.LOAD_COURSES_FAILURE,
         error
-    }
+    };
 }
 
 // this is a thunk that will make the async call to courses api
@@ -43,14 +43,14 @@ export function loadCourses() {
             dispatch(loadCoursesSuccess(courses));
         }).catch(error => {
             throw(error);
-        })
-    }
+        });
+    };
 }
 
 // sync action
-export function exampleSyncAction(stuff) {
-    return {
-        type: types.EXAMPLE_SYNC_ACTION,
-        stuff
-    }
-}
+// export function exampleSyncAction(stuff) {
+//     return {
+//         type: types.EXAMPLE_SYNC_ACTION,
+//         stuff
+//     }
+// }

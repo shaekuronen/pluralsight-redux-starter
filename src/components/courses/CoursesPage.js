@@ -18,7 +18,7 @@ class CoursesPage extends React.Component {
                 <div className="row">
                     <div className="col-xs-12">
                         <h1>Courses</h1>
-                        <Link to='/course' className="btn btn-primary">Add Course</Link>
+                        <Link to="/course" className="btn btn-primary">Add Course</Link>
                         <CoursesList courses={this.props.courses} />
                     </div>
                 </div>

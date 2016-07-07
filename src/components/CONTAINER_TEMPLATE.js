@@ -3,6 +3,7 @@
 
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import * as templateActions from '../actions/ACTIONS_TEMPLATE';
 import {bindActionCreators} from 'redux';
 
 class CONTAINER_COMPONENT_NAME extends React.Component {
@@ -11,14 +12,13 @@ class CONTAINER_COMPONENT_NAME extends React.Component {
     }
     render() {
         return(
-
+            <div></div>
         );
     }
 }
 
 CONTAINER_COMPONENT_NAME.propTypes = {
-    actions: PropTypes.object.isRequired,
-    // myProp: PropTypes.string.isRequired
+    actions: PropTypes.object.isRequired
 };
 
 // ownProps references the components own props
@@ -29,9 +29,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 // makes actions available under this.props.actions
-function mapDispatchToProps(state, ownProps) {
+function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators(templateActions, dispatch)
     };
 }
 

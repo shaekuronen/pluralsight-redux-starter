@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import {browserHistory} from 'react-router';
-import CourseApi from '../../api/CourseApi';
+import CourseApi from '../../api/courseApi';
 
 class ManageCoursesPage extends React.Component {
     constructor(props, context) {
@@ -84,7 +84,7 @@ function mapStateToProps(state, ownProps) {
         return {
             value: author.id,
             text: author.firstName + " " + author.lastName  
-        }
+        };
     });
     return {
         course: course,

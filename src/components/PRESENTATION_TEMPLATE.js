@@ -3,14 +3,14 @@
 
 import React, {PropTypes} from 'react';
 
-const PRESENTATION_COMPONENT_NAME = ({destructuredProp1, destructuredProp2, etc}) => {
+const PRESENTATION_COMPONENT_NAME = ({myProp}) => {
     return (
         <div></div>
     );
-}
+};
 
 PRESENTATION_COMPONENT_NAME.propTypes = {
-    // myProp: PropTypes.string.isRequired
+    myProp: PropTypes.string.isRequired
 };
 
 export default PRESENTATION_COMPONENT_NAME;

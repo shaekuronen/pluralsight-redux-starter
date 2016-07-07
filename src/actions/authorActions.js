@@ -5,7 +5,7 @@ export function loadAuthorsSuccess(authors) {
     return {
         type: types.LOAD_AUTHORS_SUCCESS,
         authors
-    }
+    };
 }
 
 // TODO: implement this instead of throwing error
@@ -13,7 +13,7 @@ export function loadAuthorsFailure(error) {
     return {
         type: types.LOAD_AUTHORS_FAILURE,
         error
-    }
+    };
 }
 
 // this is a thunk that will make the async call to authors api
@@ -25,6 +25,6 @@ export function loadAuthors() {
             dispatch(loadAuthorsSuccess(authors));
         }).catch(error => {
             throw(error);
-        })
-    }
+        });
+    };
 }

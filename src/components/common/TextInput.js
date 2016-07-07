@@ -21,7 +21,7 @@ const TextInput = ({name, label, onChange, placeholder, value, error}) => {
             </div>
         </div>
     );
-}
+};
 
 TextInput.propTypes = {
     name: PropTypes.string.isRequired,
