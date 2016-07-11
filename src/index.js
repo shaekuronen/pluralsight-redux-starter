@@ -9,6 +9,7 @@ import {loadCourses} from './actions/courseActions';
 import {loadAuthors} from './actions/authorActions';
 import './styles/styles.scss';
 import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
 store.dispatch(loadCourses());

@@ -5,13 +5,15 @@ import * as courseActions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import {browserHistory} from 'react-router';
 import CourseApi from '../../api/courseApi';
+import toastr from 'toastr';
 
 class ManageCoursesPage extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
             course: Object.assign({}, this.props.course),
-            errors: {}
+            errors: {},
+            saving: false
         };
         // bind this to updateCourseState
         this.updateCourseState = this.updateCourseState.bind(this);
@@ -26,7 +28,17 @@ class ManageCoursesPage extends React.Component {
     }
     saveCourse(event) {
         event.preventDefault();
-        this.props.actions.saveCourse(this.state.course);
+        this.setState({saving: true});
+        this.props.actions.saveCourse(this.state.course).then(() => {
+            this.redirect();
+        }).catch(error => {
+            toastr.error(error);
+            this.setState({saving: false});
+        });
+    }
+    redirect() {
+        this.setState({saving: false});
+        toastr.success('Course saved');
         browserHistory.push('/courses');
     }
     updateCourseState(event) {
@@ -47,6 +59,7 @@ class ManageCoursesPage extends React.Component {
                             onSave={this.saveCourse}
                             onChange={this.updateCourseState}
                             errors={this.state.errors}
+                            saving={this.state.saving}
                         />
                     </div>
                 </div>

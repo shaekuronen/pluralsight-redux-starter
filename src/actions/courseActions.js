@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import CourseApi from '../api/courseApi';
+import {beginAjaxCall, endAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function updateCourseSuccess(course) {
     return {type: types.UPDATE_COURSE_SUCCESS, course};
@@ -11,11 +12,14 @@ export function createCourseSuccess(course) {
 
 export function saveCourse(course) {
     return function(dispatch, getState) {
+        dispatch(beginAjaxCall());
         return CourseApi.saveCourse(course).then(savedCourse => {
             course.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse));
         }).catch(error => {
+            dispatch(ajaxCallError(error));
             throw(error);
         });
+        dispatch(endAjaxCall());
     };
 }
 
@@ -39,11 +43,13 @@ export function loadCoursesFailure(error) {
 export function loadCourses() {
     // thunk always returns a function that accepts dispatch as callback argument
     return function(dispatch) {
+        dispatch(beginAjaxCall());
         return CourseApi.getAllCourses().then(courses => {
             dispatch(loadCoursesSuccess(courses));
         }).catch(error => {
             throw(error);
         });
+        dispatch(endAjaxCall());
     };
 }
 
